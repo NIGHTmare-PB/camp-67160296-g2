@@ -3,15 +3,22 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/myview2', function () {
-    return view('html101');
+    return view('template.html101');
 });
 
 Route::get('/view2', function(){
-    return view('myview2');
+    return view('template.myview2');
 });
 
 Route::get('/mycontroller', [App\Http\Controllers\MyController::class, 'INDEX']);
 Route::post('/mycontroller', [App\Http\Controllers\MyController::class, 'process']);
 
-Route::get('/workshop', [App\Http\Controllers\Workshop::class, 'index']);
-Route::post('/workshop', [App\Http\Controllers\Workshop::class, 'store']);
+Route::get('/', [App\Http\Controllers\Workshop::class, 'index']);
+Route::post('/', [App\Http\Controllers\Workshop::class, 'store']);
+
+
+
+Route::resource('/flights', App\Http\Controllers\FlightController::class);
+
+
+Route::resource('/pokedexs', App\Http\Controllers\PokedexController::class);
